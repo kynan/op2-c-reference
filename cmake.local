@@ -1,6 +1,7 @@
 #! /bin/bash
 
 INSTALLDIR=`pwd`"/local"
+CORES=`fgrep -m 1 'cpu cores' /proc/cpuinfo | cut -d ' ' -f 3`
 
 mkdir -p build && cd build &&
 (
@@ -8,7 +9,6 @@ mkdir -p build && cd build &&
         -DCMAKE_BUILD_TYPE=Debug \
         .. &&
 
-  make -j4 all airfoil_seq jac1_seq jac2_seq &&
-  make install
+        (make -j$CORES all examples; make install)
 )
 

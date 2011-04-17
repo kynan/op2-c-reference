@@ -137,10 +137,12 @@ set(OP2_EXAMPLES
   jac1
   jac2
   laplace1d
-  )
+)
 
 # Add tests but do not add to default target
 foreach(EXAMPLE ${OP2_EXAMPLES})
   add_subdirectory(examples/C/${EXAMPLE})
+  set(EXAMPLE_TARGETS ${EXAMPLE}_seq ${EXAMPLE_TARGETS})
 endforeach()
 
+ADD_CUSTOM_TARGET( examples DEPENDS ${EXAMPLE_TARGETS} COMMENT "Build examples" )
