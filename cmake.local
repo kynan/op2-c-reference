@@ -1,0 +1,14 @@
+#! /bin/bash
+
+INSTALLDIR=`pwd`"/local"
+
+mkdir -p build && cd build &&
+(
+  cmake -DCMAKE_INSTALL_PREFIX=$INSTALLDIR \
+        -DCMAKE_BUILD_TYPE=Debug \
+        .. &&
+
+  make -j4 all airfoil_seq jac1_seq jac2_seq &&
+  make install
+)
+
