@@ -114,6 +114,7 @@ endif()
 set(OP2_BIN_DIR "bin" CACHE PATH "Binary installation directory.")
 set(OP2_LIB_DIR "lib" CACHE PATH "Library installation directory.")
 set(OP2_INCLUDE_DIR "include" CACHE PATH "C/C++ header installation directory.")
+set(OP2_EXAMPLES_DIR "examples" CACHE PATH "Examples installation directory.")
 
 # Add source directory
 add_subdirectory(op2)
@@ -129,6 +130,6 @@ set(OP2_EXAMPLES
 
 # Add tests but do not add to default target
 foreach(EXAMPLE ${OP2_EXAMPLES})
-  add_subdirectory(examples/C/${EXAMPLE} EXCLUDE_FROM_ALL)
+  add_subdirectory(examples/C/${EXAMPLE})
 endforeach()
 
